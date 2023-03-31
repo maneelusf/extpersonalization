@@ -1,3 +1,5 @@
 src/mlruns
-src/mlflow.d
+src/mlflow.db
 *pycache
+*__pycache__/*
+*.pyc
