@@ -30,6 +30,8 @@ def parse_global_args(parser):
                         help='To train the model or not.')
     parser.add_argument('--regenerate', type=int, default=0,
                         help='Whether to regenerate intermediate files')
+    parser.add_argument('--mlflow', type=bool, default=False,
+                        help='A boolean flag of whether to load MLFlow')
     return parser
 
 
@@ -76,7 +78,9 @@ def main():
     if args.train > 0:
         runner.train(data_dict)
     eval_res = runner.print_res(data_dict['test'])
-    logging.info(os.linesep + 'Test After Training: ' + eval_res)
+    eval_str = '(' + utils.format_metric(eval_res) + ')'
+    runner.mlflow_log_metrics(runner.head_to_dict(eval_res,'test'),0)
+    logging.info(os.linesep + 'Test After Training: ' + eval_str)
     # save_rec_results(data_dict['dev'], runner, 100)
     model.actions_after_train()
     logging.info(os.linesep + '-' * 45 + ' END: ' + utils.get_time() + ' ' + '-' * 45)
@@ -100,6 +104,7 @@ def save_rec_results(dataset, runner, topk):
 
 
 if __name__ == '__main__':
+    #import pdb;pdb.set_trace()
     init_parser = argparse.ArgumentParser(description='Model')
     init_parser.add_argument('--model_name', type=str, default='BPRMF', help='Choose a model to run.')
     init_args, init_extras = init_parser.parse_known_args()
@@ -109,11 +114,15 @@ if __name__ == '__main__':
 
     # Args
     parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--model_name', type=str, default=init_args.model_name)
     parser = parse_global_args(parser)
     parser = reader_name.parse_data_args(parser)
     parser = runner_name.parse_runner_args(parser)
     parser = model_name.parse_model_args(parser)
     args, extras = parser.parse_known_args()
+
+    
+    
 
     # Logging configuration
     log_args = [init_args.model_name, args.dataset, str(args.random_seed)]

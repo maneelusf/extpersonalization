@@ -1,0 +1,2 @@
+- To run the file for amazon_toys_and_games, pls run !python run_amazon.py
+- To run the file for yelp, pls run !python run_yelp.py

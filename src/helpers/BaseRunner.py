@@ -86,6 +86,40 @@ class BaseRunner(object):
         self.main_metric = '{}@{}'.format(self.metrics[0], self.topk[0])  # early stop based on main_metric
 
         self.time = None  # will store [start_time, last_step_time]
+        self.config = vars(args)
+        self.log_mlflow = args.mlflow
+        self._mlflow_dict()
+        
+    def _mlflow_dict(self):
+        if self.log_mlflow:
+            try:
+                import mlflow
+                if mlflow.active_run() is None:                
+                    self._mlflow = mlflow
+                    self._mlflow.end_run()
+                else:
+                    self._mlflow = mlflow
+                    self._mlflow.end_run()
+                self._mlflow.set_tracking_uri('sqlite:///mlflow.db')
+                self._mlflow.set_experiment('Rechorus')
+                self._mlflow.start_run(run_name = self.config['model_name'] + '_' + str(int(time())))
+                self._mlflow.log_params(self.config)
+           
+            except ImportError:
+                raise ImportError(
+                    "To use mlflow Logger please install mlflow."
+                    "Run `pip install mlflow` to install it."
+                )
+    def mlflow_log_metrics(self,params,step):
+        if self.log_mlflow:
+            self._mlflow.log_metrics(params,step = step)
+
+    def head_to_dict(self,dictionary,head):
+        dictionary_new = {}
+        for key in dictionary:
+            dictionary_new[head + '/' + key.replace('@','_')] = dictionary[key]
+            
+        return dictionary_new
 
     def _check_time(self, start=False):
         if self.time is None or start:
@@ -113,22 +147,27 @@ class BaseRunner(object):
                 torch.cuda.empty_cache()
                 loss = self.fit(data_dict['train'], epoch=epoch + 1)
                 training_time = self._check_time()
+                train_params = {'training_time':training_time,'train_loss':loss}
+                self.mlflow_log_metrics(train_params,epoch)
 
                 # Observe selected tensors
                 if len(model.check_list) > 0 and self.check_epoch > 0 and epoch % self.check_epoch == 0:
                     utils.check(model.check_list)
 
                 # Record dev results
-                dev_result = self.evaluate(data_dict['dev'], self.topk[:1], self.metrics)
+                dev_result = self.evaluate(data_dict['dev'], self.topk, self.metrics)
+                self.mlflow_log_metrics(self.head_to_dict(dev_result,'dev'),epoch)
                 dev_results.append(dev_result)
+                
                 main_metric_results.append(dev_result[self.main_metric])
                 logging_str = 'Epoch {:<5} loss={:<.4f} [{:<3.1f} s]    dev=({})'.format(
                     epoch + 1, loss, training_time, utils.format_metric(dev_result))
 
                 # Test
                 if self.test_epoch > 0 and epoch % self.test_epoch  == 0:
-                    test_result = self.evaluate(data_dict['test'], self.topk[:1], self.metrics)
+                    test_result = self.evaluate(data_dict['test'], self.topk, self.metrics)
                     logging_str += ' test=({})'.format(utils.format_metric(test_result))
+                    self.mlflow_log_metrics(self.head_to_dict(dev_result,'test'),epoch)
                 testing_time = self._check_time()
                 logging_str += ' [{:<.1f} s]'.format(testing_time)
 
@@ -223,5 +262,5 @@ class BaseRunner(object):
         :return: test result string
         """
         result_dict = self.evaluate(dataset, self.topk, self.metrics)
-        res_str = '(' + utils.format_metric(result_dict) + ')'
-        return res_str
+        #res_str = '(' + utils.format_metric(result_dict) + ')'
+        return result_dict
