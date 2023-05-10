@@ -61,7 +61,7 @@ def main():
         logging.info('Save corpus to {}'.format(corpus_path))
         pickle.dump(corpus, open(corpus_path, 'wb'))
     # save argumnets
-    args_path = '../data/ml-1m/args.pkl'
+    args_path = '../data/Grocery_and_Gourmet_Food/args.pkl'
     import pdb;pdb.set_trace()
     pickle.dump(args,open(args_path, 'wb'))
 
