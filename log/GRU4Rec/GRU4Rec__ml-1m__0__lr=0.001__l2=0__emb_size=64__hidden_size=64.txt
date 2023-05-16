@@ -1,0 +1,223 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-30 19:08:48 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 1         
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | False     
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Reading data from "../data/", dataset = "ml-1m" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 6040, "# item": 3706, "# entry": 1000209
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2835 [54.0 s]    dev=(HR@5:0.4212,NDCG@5:0.2862) [0.5 s] *
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@5:0.4212,NDCG@5:0.2862) [54.4 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0__emb_size=64__hidden_size=64.pt
+INFO:root:
+Test After Training: (HR@5:0.4103,NDCG@5:0.2773,HR@10:0.5813,NDCG@10:0.3324,HR@20:0.7568,NDCG@20:0.3769,HR@50:0.9440,NDCG@50:0.4146)
+INFO:root:
+--------------------------------------------- END: 2023-03-30 19:09:53 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-30 19:18:11 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 100       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | True      
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-30 20:33:52 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 100       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | True      
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-30 22:58:12 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 100       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | True      
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-30 23:41:11 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 100       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | True      
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-03-31 09:01:43 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 100       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 0         
+ lr              | 0.001     
+ mlflow          | True      
+ model_name      | GRU4Rec   
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
