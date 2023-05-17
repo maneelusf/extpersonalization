@@ -1,11 +1,11 @@
 <details open="open">
 <summary>Table of Contents</summary>
 
-- [About](##About)
-- [Prerequisites](##Prerequisites)
-- [Getting Started](##Getting Started)
-- [Approach](##Approach)
-- [Support](##Support)
+- [About](#about)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Approach](#approach)
+- [Support](#support)
 
 </details>
 
