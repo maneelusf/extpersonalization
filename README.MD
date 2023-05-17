@@ -1,11 +1,11 @@
 <details open="open">
 <summary>Table of Contents</summary>
 
-- [About](#about)
+- [About](##About)
 - [Prerequisites](##Prerequisites)
 - [Getting Started](##Getting Started)
 - [Approach](##Approach)
-- [Support](#Support)
+- [Support](##Support)
 
 </details>
 
@@ -26,7 +26,7 @@ In this repository, we have chosen GRU4Rec as the sequential recommender system 
 
 
 
-## **Prerequisites**
+## Prerequisites
 
 ```sh
 pip install -r requirements.txt
