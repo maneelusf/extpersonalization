@@ -2,16 +2,16 @@
 <summary>Table of Contents</summary>
 
 - [About](#about)
-- [Prerequisites](#getting-started)
+- [Prerequisites](##Prerequisites)
 - [Getting Started](##Getting Started)
-- [Methodology](##Methodology)
-- [Support](#support)
+- [Approach](##Approach)
+- [Support](#Support)
 
 </details>
 
 ---
 
-# About
+## About
 
 <table>
 <tr>
