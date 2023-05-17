@@ -15,11 +15,12 @@
 <table>
 <tr>
 <td>
-The purpose of this repository is to enhance explainability of sequential recommender models with SHAP values. We currently use 2 packages for this
-    - [Rechorus](https://github.com/THUwangcy/ReChorus): A general PyTorch framework for Top-K recommendation with implicit feedback
-    - [TimeSHAP](https://github.com/feedzai/timeshap): A model-agnostic, recurrent explainer that builds upon KernelSHAP and extends it to the sequential domain. TimeSHAP computes event/timestamp- feature-, and cell-level attributions. 
+The purpose of this repository is to enhance explainability of sequential recommender models with SHAP values. We currently use 2 packages for this<br>
+    - [Rechorus](https://github.com/THUwangcy/ReChorus): A general PyTorch framework for Top-K recommendation with implicit feedback<br>
+    - [TimeSHAP](https://github.com/feedzai/timeshap): A model-agnostic, recurrent explainer that builds upon KernelSHAP and extends it to the sequential domain. TimeSHAP computes event/timestamp- feature-, and cell-level attributions.<br>
 
-In this repository, we have chosen GRU4Rec as the sequential recommender system and provided a local level explainations of 
+In this repository, we have chosen GRU4Rec as the sequential recommender system and provided a local level explanations of a few
+    interactions on MovieLens 1m dataset.
 
 
 
