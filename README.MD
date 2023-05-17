@@ -4,6 +4,7 @@
 - [About](#about)
 - [Prerequisites](#getting-started)
 - [Getting Started](##Getting Started)
+- [Methodology](##Methodology)
 - [Support](#support)
 
 </details>
@@ -58,9 +59,14 @@ python main.py --model_name GRU4Rec --emb_size 64 --lr 1e-3 --l2 1e-6 --dataset 
 ```bash
 cd ../Notebooks
 ```
-    
+## Approach
+1. The first step is to generate a list of the top K recommended items, and to calculate their scores using a matrix multiplication of the output vector from the model's forward loop with each item. These scores are expected to be highly positive numbers.<br>
+2. When perturbing the sequence with a baseline item, the output vector from the forward loop is calculated using the original top K recommended items, rather than calculating it with each individual item in the sequence.<br>
+3. This approach is motivated by the hypothesis that the initial list of top K items should not result in a higher positive score when perturbing the sequence. The objective is to evaluate the effect of the perturbed items on the recommendation score relative to the original recommended items.<br>
+4. For example, it is expected that the SHAPLEY values for events -1 to -5 will be the highest. Therefore, perturbing these events should result in a vector that is less similar to the recommended items. Conversely, the last items in a sequence (e.g. events -20 and onwards) should output a vector that is similar to the recommended items, as these events have less impact on the subsequent items in the sequence.<br>
+
 ### Calculating SHAP values
-After training a SHAP model, we can run the following the [notebook](https://github.com/maneelusf/extpersonalization/blob/main/notebooks/Notebook%20to%20generate%20top%20K%20recommendations.ipynb).
+After training a model, we can run the following the [notebook] (https://github.com/maneelusf/extpersonalization/blob/main/notebooks/Notebook%20to%20generate%20top%20K%20recommendations.ipynb)to generate SHAP values. 
 
 ## Support
 
